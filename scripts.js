@@ -1,18 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
   var startInfluencerBtn = document.getElementById('start-influencer-btn');
+  var influencerSignupBtn = document.getElementById('influencer-signup-btn');
   var revealElements = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
 
-  if (startInfluencerBtn) {
-    startInfluencerBtn.addEventListener('click', function (event) {
-      var host = window.location.hostname;
-      var isProd = host === 'reelsrev.com' || host === 'www.reelsrev.com';
-      if (!isProd) {
-        return;
-      }
+  function handleInfluencerRedirect(event) {
+    var host = window.location.hostname;
+    var isProd = host === 'reelsrev.com' || host === 'www.reelsrev.com';
+    if (!isProd) {
+      return;
+    }
 
-      event.preventDefault();
-      window.open('https://influencers.reelsrev.com', '_blank', 'noopener,noreferrer');
-    });
+    event.preventDefault();
+    window.open('https://influencers.reelsrev.com', '_blank', 'noopener,noreferrer');
+  }
+
+  if (startInfluencerBtn) {
+    startInfluencerBtn.addEventListener('click', handleInfluencerRedirect);
+  }
+
+  if (influencerSignupBtn) {
+    influencerSignupBtn.addEventListener('click', handleInfluencerRedirect);
   }
 
   if ('IntersectionObserver' in window) {
